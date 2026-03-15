@@ -14,8 +14,8 @@ $this->title = 'Writings';
 $this->params['breadcrumbs'][] = "";
 ?>
 <div class="site-writings">
-    <div class="row">
-        <div class="col-md-12 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Title</h2>
@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = "";
                     <div class="card-text">
                         something something
                     </div>
-                    <?= Html::a('View Writings', ['site/writing'], ['class' => 'btn btn-outline-secondary mt-2']) ?>
                 </div>
+                <?= Html::a('View Writings', ['site/writing'], ['class' => 'btn btn-outline-secondary mt-2']) ?>
             </div>
         </div>
     </div>
