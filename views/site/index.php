@@ -10,6 +10,7 @@ use yii\bootstrap5\LinkPager;
 use app\models\ChurchGroups;
 
 $this->title = 'The wisdom of God the Church';
+$this->params['meta_description'] = "To those that are seeking God in their heart, The Spirit of God will Guide you to the truth.";
 
 $this->params['breadcrumbs'][] = "";
 ?>

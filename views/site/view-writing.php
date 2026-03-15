@@ -8,6 +8,7 @@ use yii\helpers\Html;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Writings', 'url' => ['writings']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 50);
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="site-view-writing">
