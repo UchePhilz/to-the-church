@@ -165,14 +165,14 @@ class SiteController extends Controller
     /**
      * Displays a single Writing for public view.
      *
-     * @param int $id
+     * @param string $title
      * @return string
      * @throws \yii\web\NotFoundHttpException
      */
-    public function actionViewWriting($id)
+    public function actionViewWriting($title)
     {
         $this->layout = 'public_scroll';
-        $model = \app\models\Writings::findOne($id);
+        $model = \app\models\Writings::findOne(['title' => $title]);
         if (!$model) {
             throw new \yii\web\NotFoundHttpException('The requested writing does not exist.');
         }
