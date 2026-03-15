@@ -9,7 +9,7 @@ use yii\helpers\Url;
 use yii\bootstrap5\LinkPager;
 use app\models\ChurchGroups;
 
-$this->title = 'Writings';
+$this->title = 'The wisdom of God the Church';
 
 $this->params['breadcrumbs'][] = "";
 ?>
@@ -18,15 +18,21 @@ $this->params['breadcrumbs'][] = "";
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">Title</h2>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        Something
-                    </h6>
-                    <div class="card-text">
-                        something something
+                    <div class="card-text" style="font-size: x-large;">
+                        God has been very gracious to the world and to the church. <br>
+                        He has given us His Spirit so we can be his able children in this world.<br>
+                        <hr>
+                        These writings are for:
+                        <ul>
+                            <li>Those that are seeking God in their heart.</li>
+                            <li>Those that say they believe but are lost.</li>
+                            <li>Those that are now confident.</li>
+                        </ul>
+                        <hr>
+                        The Spirit of God will Guide you to the truth, and you shall see yourself as you see Him<br>
                     </div>
                 </div>
-                <?= Html::a('View Writings', ['site/writing'], ['class' => 'btn btn-outline-secondary mt-2']) ?>
+                <?= Html::a('View Writings', ['site/writings'], ['class' => 'btn btn-outline-secondary mt-2']) ?>
             </div>
         </div>
     </div>

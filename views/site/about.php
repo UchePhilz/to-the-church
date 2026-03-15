@@ -9,8 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <p>
-        This is the About page. You may modify the following file to customize its content:
+        The website and its content is meant to edify the Church of God.
     </p>
 
-    <code><?= __FILE__ ?></code>
 </div>

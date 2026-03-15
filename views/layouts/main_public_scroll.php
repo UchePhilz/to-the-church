@@ -34,19 +34,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <header id="header">
     <?= $this->render('@app/views/layouts/partials/_public_nav') ?>
+
+
 </header>
 
 <main id="main" class="flex-shrink-0" role="main" style="padding-top: 60px;">
     <div class="scroll-container">
         <div class="scroll-header">
             <h1><?= Html::encode($this->title) ?></h1>
-            <?php if (!empty($this->params['breadcrumbs'])): ?>
-                <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
-            <?php endif ?>
         </div>
-        
         <div class="scroll-content">
-            <?= Alert::widget() ?>
             <?= $content ?>
         </div>
         
@@ -55,7 +52,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         </div>
     </div>
 </main>
-
 
 <?= $this->render('@app/views/layouts/partials/_public_footer') ?>
 

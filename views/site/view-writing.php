@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-view-writing">
     <div class="writing-header mb-4">
         <p class="text-muted">
-            Published by <strong><?= Html::encode($model->churchGroup->name) ?></strong>
+            <strong><?= Html::encode($model->churchGroup->name) ?></strong>
             on <?= date('F j, Y', strtotime($model->created_at)) ?>
         </p>
 

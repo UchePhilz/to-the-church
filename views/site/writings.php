@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="card-body">
                         <h2 class="card-title"><?= Html::encode($writing->title) ?></h2>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            By <?= Html::encode($writing->churchGroup->name) ?> on <?= date('F j, Y', strtotime($writing->created_at)) ?>
+                            <?= Html::encode($writing->churchGroup->name) ?> on <?= date('F j, Y', strtotime($writing->created_at)) ?>
                         </h6>
                         <div class="card-text">
                             <?= \yii\helpers\StringHelper::truncateWords(strip_tags($writing->body), 50) ?>

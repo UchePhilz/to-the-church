@@ -62,7 +62,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-            $this->layout = 'public_scroll';
+            $this->layout = 'main_public_scroll';
             return $this->render('index');
         }
         $this->layout = 'admin_layout';
