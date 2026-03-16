@@ -10,12 +10,6 @@ use yii\helpers\ArrayHelper;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<style>
-    p {
-        margin-bottom: 2px
-    }
-</style>
-
 <div class="writings-form">
 
     <?php $form = ActiveForm::begin(); ?>

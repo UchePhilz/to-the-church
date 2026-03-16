@@ -11,6 +11,12 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 50);
 \yii\web\YiiAsset::register($this);
 ?>
+<style>
+    p {
+        margin-bottom: 2px
+    }
+</style>
+
 <div class="site-view-writing">
     <div class="writing-header mb-4">
         <p class="text-muted">
