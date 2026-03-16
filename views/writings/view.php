@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'format' => 'raw',
                     ],
+                    'published',
                     'body:raw',
                     'created_at:datetime',
                 ],

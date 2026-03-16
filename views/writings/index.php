@@ -43,7 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card h-100 shadow-sm border-start-lg border-start-primary">
                         <div class="card-header d-flex justify-content-between align-items-center bg-white py-3">
-                            <div class="text-xs fw-bold text-primary text-uppercase"><?= Html::encode($model->churchGroup->name ?? 'N/A') ?></div>
+                            <div class="text-xs fw-bold text-primary text-uppercase">
+                                <?= Html::encode($model->churchGroup->name ?? 'N/A') ?>
+                                <span class="ms-2 badge <?= $model->status === $model::STATUS_PUBLISHED ? 'bg-success' : 'bg-warning text-dark' ?>">
+                                    <?= ucfirst(Html::encode($model->status)) ?>
+                                </span>
+                            </div>
                             <div class="dropdown no-caret">
                                 <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="dropdownMenuButton<?= $model->id ?>" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="more-vertical"></i></button>
                                 <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="dropdownMenuButton<?= $model->id ?>">

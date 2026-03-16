@@ -18,7 +18,7 @@ class WritingsSearch extends Writings
     {
         return [
             [['id', 'church_group_id'], 'integer'],
-            [['title', 'body', 'created_at'], 'safe'],
+            [['title', 'body', 'created_at', 'status'], 'safe'],
         ];
     }
 
@@ -62,6 +62,7 @@ class WritingsSearch extends Writings
             'id' => $this->id,
             'church_group_id' => $this->church_group_id,
             'created_at' => $this->created_at,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

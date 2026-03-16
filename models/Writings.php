@@ -12,11 +12,15 @@ use Yii;
  * @property string $title
  * @property string $body
  * @property string|null $created_at
+ * @property string $status
  *
  * @property ChurchGroups $churchGroup
  */
 class Writings extends \yii\db\ActiveRecord
 {
+
+    const STATUS_PUBLISHED = 'published';
+    const STATUS_DRAFT = 'draft';
 
 
     /**
@@ -36,9 +40,11 @@ class Writings extends \yii\db\ActiveRecord
         return [
             [['church_group_id', 'title', 'body'], 'required'],
             [['church_group_id'], 'integer'],
-            [['body'], 'string'],
+            [['body', 'status'], 'string'],
             [['created_at', 'tag_list'], 'safe'],
             [['title'], 'string', 'max' => 255],
+            ['status', 'default', 'value' => self::STATUS_DRAFT],
+            ['status', 'in', 'range' => [self::STATUS_PUBLISHED, self::STATUS_DRAFT]],
             [['church_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => ChurchGroups::class, 'targetAttribute' => ['church_group_id' => 'id']],
         ];
     }
@@ -54,6 +60,7 @@ class Writings extends \yii\db\ActiveRecord
             'title' => 'Title',
             'body' => 'Body',
             'created_at' => 'Created At',
+            'status' => 'Status',
             'tag_list' => 'Tags',
         ];
     }

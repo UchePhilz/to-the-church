@@ -23,7 +23,13 @@ use yii\helpers\ArrayHelper;
         <div class="col-md-6">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <?= $form->field($model, 'status')->dropDownList([
+                $model::STATUS_DRAFT => 'Draft',
+                $model::STATUS_PUBLISHED => 'Published',
+            ]) ?>
+        </div>
+        <div class="col-md-3">
             <?= $form->field($model, 'tag_list')->dropDownList(
                 ArrayHelper::map(\app\models\Tags::find()->all(), 'tag', 'tag'),
                 [

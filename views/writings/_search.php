@@ -21,16 +21,22 @@ use yii\helpers\ArrayHelper;
     ]); ?>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'church_group_id')->dropDownList(
                 ArrayHelper::map(ChurchGroups::find()->all(), 'id', 'name'),
                 ['prompt' => 'Select Church Group']
             ) ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <?= $form->field($model, 'status')->dropDownList([
+                $model::STATUS_DRAFT => 'Draft',
+                $model::STATUS_PUBLISHED => 'Published',
+            ], ['prompt' => 'Select Status']) ?>
+        </div>
+        <div class="col-md-3">
             <?= $form->field($model, 'title') ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?= $form->field($model, 'body') ?>
         </div>
     </div>

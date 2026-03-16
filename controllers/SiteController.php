@@ -144,7 +144,9 @@ class SiteController extends Controller
     public function actionWritings($church_group_id = null)
     {
         $this->layout = 'public_scroll';
-        $query = \app\models\Writings::find()->orderBy(['created_at' => SORT_DESC]);
+        $query = \app\models\Writings::find()
+            ->where(['status' => \app\models\Writings::STATUS_PUBLISHED])
+            ->orderBy(['created_at' => SORT_DESC]);
         
         if ($church_group_id) {
             $query->andWhere(['church_group_id' => $church_group_id]);
@@ -172,8 +174,9 @@ class SiteController extends Controller
     public function actionViewWriting($title)
     {
         $this->layout = 'public_scroll';
-        $model = \app\models\Writings::findOne(['title' => $title]);
-        if (!$model) {
+        $model = \app\models\Writings::find()->where(['title' => $title])->one();
+        
+        if (!$model || ($model->status !== \app\models\Writings::STATUS_PUBLISHED && Yii::$app->user->isGuest)) {
             throw new \yii\web\NotFoundHttpException('The requested writing does not exist.');
         }
 
