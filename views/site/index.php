@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = "";
 ?>
 <div class="site-writings">
     <div class="row justify-content-center">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-text" style="font-size: x-large;">
