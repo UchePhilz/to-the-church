@@ -15,6 +15,13 @@ $this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(str
     p {
         margin-bottom: 2px
     }
+    .ql-code-block-container {
+        background-color: #eee9dc;
+        color: #763d10;
+        padding: 4px;
+        font-style: italic;
+        border-radius: 16px;
+    }
 </style>
 
 <div class="site-view-writing">
