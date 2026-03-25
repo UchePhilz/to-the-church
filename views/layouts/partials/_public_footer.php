@@ -25,7 +25,7 @@ use yii\bootstrap5\Offcanvas;
 $groups = ChurchGroups::find()->orderBy(['name' => SORT_ASC])->all();
 Offcanvas::begin([
     'id' => 'offcanvasGroups',
-    'title' => 'Church Groups:',
+    'title' => 'Writing Groups:',
     'placement' => 'end',
     'options' => ['class' => 'offcanvas-scroll'],
 ]);
