@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property string|null $url_tag
  *
  * @property Writings[] $writings
  */
@@ -31,7 +32,7 @@ class ChurchGroups extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'url_tag'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,6 +44,7 @@ class ChurchGroups extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'url_tag' => 'Url Tag',
         ];
     }
 

@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'name',
+                    'url_tag',
                 ],
             ]) ?>
         </div>

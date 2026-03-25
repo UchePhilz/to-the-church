@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="dropdownMenuButton<?= $model->id ?>" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="more-vertical"></i></button>
                                 <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="dropdownMenuButton<?= $model->id ?>">
                                     <?= Html::a('<div class="dropdown-item-icon"><i data-feather="eye"></i></div> View', ['view', 'id' => $model->id], ['class' => 'dropdown-item']) ?>
+                                    <?= Html::a('<div class="dropdown-item-icon"><i data-feather="monitor"></i></div> Preview', ['preview', 'id' => $model->id], ['class' => 'dropdown-item']) ?>
                                     <?= Html::a('<div class="dropdown-item-icon"><i data-feather="edit"></i></div> Update', ['update', 'id' => $model->id], ['class' => 'dropdown-item']) ?>
                                     <?= Html::a('<div class="dropdown-item-icon"><i data-feather="trash-2"></i></div> Delete', ['delete', 'id' => $model->id], [
                                         'class' => 'dropdown-item',

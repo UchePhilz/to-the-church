@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
 
                     'name',
+                    'url_tag',
                     [
                         'class' => ActionColumn::className(),
                         'urlCreator' => function ($action, ChurchGroups $model, $key, $index, $column) {

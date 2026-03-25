@@ -7,6 +7,7 @@ use app\models\search\WritingsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * WritingsController implements the CRUD actions for Writings model.
@@ -21,6 +22,15 @@ class WritingsController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -60,6 +70,20 @@ class WritingsController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Displays a single Writing for admin preview with public layout.
+     * @param int $id ID
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionPreview($id)
+    {
+        $this->layout = 'main_public_scroll';
+        return $this->render('preview', [
             'model' => $this->findModel($id),
         ]);
     }

@@ -18,7 +18,7 @@ class ChurchGroupsSearch extends ChurchGroups
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'url_tag'], 'safe'],
         ];
     }
 
@@ -62,7 +62,8 @@ class ChurchGroupsSearch extends ChurchGroups
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'url_tag', $this->url_tag]);
 
         return $dataProvider;
     }

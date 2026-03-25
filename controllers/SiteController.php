@@ -141,13 +141,20 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionWritings($church_group_id = null)
+    public function actionWritings($church_group_id = null, $url_tag = null)
     {
         $this->layout = 'public_scroll';
         $query = \app\models\Writings::find()
             ->where(['status' => \app\models\Writings::STATUS_PUBLISHED])
             ->orderBy(['created_at' => SORT_DESC]);
         
+        if ($url_tag) {
+            $churchGroup = \app\models\ChurchGroups::findOne(['url_tag' => $url_tag]);
+            if ($churchGroup) {
+                $church_group_id = $churchGroup->id;
+            }
+        }
+
         if ($church_group_id) {
             $query->andWhere(['church_group_id' => $church_group_id]);
         }

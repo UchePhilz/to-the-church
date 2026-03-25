@@ -16,13 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1><?= Html::encode($this->title) ?></h1>
         <div>
+            <?= Html::a('Preview', ['preview', 'id' => $model->id], ['class' => 'btn btn-outline-info']) ?>
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
-                    'method' => 'post',
-                ],
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                    ],
             ]) ?>
         </div>
     </div>
@@ -31,33 +32,37 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-header">Writing Details</div>
         <div class="card-body p-0">
             <?= DetailView::widget([
-                'model' => $model,
-                'options' => ['class' => 'table table-hover mb-0'],
-                'attributes' => [
-                    'id',
-                    [
-                        'attribute' => 'church_group_id',
-                        'value' => $model->churchGroup->name ?? 'N/A',
+                    'model' => $model,
+                    'options' => ['class' => 'table table-hover mb-0'],
+                    'attributes' => [
+                            'id',
+                            [
+                                    'attribute' => 'church_group_id',
+                                    'value' => $model->churchGroup->name ?? 'N/A',
+                            ],
+                            'title',
+                            'url_tag',
+                            [
+                                    'attribute' => 'tag_list',
+                                    'value' => function ($model) {
+                                        $tags = $model->tags;
+                                        if (empty($tags)) return 'No tags';
+                                        $badges = [];
+                                        foreach ($tags as $tag) {
+                                            $badges[] = Html::tag('span', Html::encode($tag->tag), ['class' => 'badge bg-primary me-1']);
+                                        }
+                                        return implode('', $badges);
+                                    },
+                                    'format' => 'raw',
+                            ],
+                            [
+                                    'attribute' => 'satus',
+                                    'value' => $model->status ?? 'N/A',
+                            ],
+                            'created_at:datetime',
+                            'body:raw',
+
                     ],
-                    'title',
-                    'url_tag',
-                    [
-                        'attribute' => 'tag_list',
-                        'value' => function($model) {
-                            $tags = $model->tags;
-                            if (empty($tags)) return 'No tags';
-                            $badges = [];
-                            foreach ($tags as $tag) {
-                                $badges[] = Html::tag('span', Html::encode($tag->tag), ['class' => 'badge bg-primary me-1']);
-                            }
-                            return implode('', $badges);
-                        },
-                        'format' => 'raw',
-                    ],
-                    'published',
-                    'body:raw',
-                    'created_at:datetime',
-                ],
             ]) ?>
         </div>
     </div>

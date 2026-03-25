@@ -6,8 +6,6 @@
 use yii\helpers\Html;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Writings', 'url' => ['writings']];
-$this->params['breadcrumbs'][] = $this->title;
 $this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 50);
 \yii\web\YiiAsset::register($this);
 ?>
@@ -24,13 +22,10 @@ $this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(str
     }
 </style>
 
-<div class="site-view-writing">
+<div class="writings-preview">
     <div class="writing-header mb-4">
         <p class="text-muted">
-            <?php 
-                $groupUrl = $model->churchGroup->url_tag ? ['site/writings', 'url_tag' => $model->churchGroup->url_tag] : ['site/writings', 'church_group_id' => $model->churchGroup->id];
-            ?>
-            <strong><?= Html::a(Html::encode($model->churchGroup->name), $groupUrl, ['class' => 'text-muted text-decoration-none']) ?></strong>
+            <strong><?= Html::encode($model->churchGroup->name ?? 'Unknown Group') ?></strong>
             on <?= date('F j, Y', strtotime($model->created_at)) ?>
         </p>
 
@@ -50,6 +45,6 @@ $this->params['meta_description'] = \yii\helpers\StringHelper::truncateWords(str
     <hr>
 
     <div class="navigation mt-4">
-        <?= Html::a('&larr; Back to Writings', ['writings'], ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::a('&larr; Back to Admin View', ['view', 'id' => $model->id], ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 </div>

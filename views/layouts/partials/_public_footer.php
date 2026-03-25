@@ -32,7 +32,10 @@ Offcanvas::begin([
 ?>
 <div class="list-group">
     <?php foreach ($groups as $group): ?>
-        <a href="<?= \yii\helpers\Url::to(['site/writings', 'church_group_id' => $group->id]) ?>" class="list-group-item list-group-item-action">
+        <?php 
+            $url = $group->url_tag ? ['site/writings', 'url_tag' => $group->url_tag] : ['site/writings', 'church_group_id' => $group->id];
+        ?>
+        <a href="<?= \yii\helpers\Url::to($url) ?>" class="list-group-item list-group-item-action">
             <strong><?= Html::encode($group->name) ?></strong>
             <br>
             <small class="text-muted"><?= count($group->writings) ?> writings</small>
