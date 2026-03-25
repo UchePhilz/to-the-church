@@ -20,32 +20,39 @@ use yii\helpers\ArrayHelper;
     ) ?>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6">
             <?= $form->field($model, 'url_tag')->textInput([
-                'maxlength' => true,
-                'placeholder' => 'lowercase-numbers-hyphen',
-                'onkeyup' => "this.value = this.value.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');"
+                    'maxlength' => true,
+                    'placeholder' => 'lowercase-numbers-hyphen',
+                    'onkeyup' => "this.value = this.value.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');"
             ]) ?>
         </div>
-        <div class="col-md-3">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <?= $form->field($model, 'status')->dropDownList([
-                $model::STATUS_DRAFT => 'Draft',
-                $model::STATUS_PUBLISHED => 'Published',
+                    $model::STATUS_DRAFT => 'Draft',
+                    $model::STATUS_PUBLISHED => 'Published',
             ]) ?>
+
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <?= $form->field($model, 'tag_list')->dropDownList(
-                ArrayHelper::map(\app\models\Tags::find()->all(), 'tag', 'tag'),
-                [
-                    'multiple' => true,
-                    'class' => 'form-control select2-tags',
-                    'id' => 'writings-tag_list'
-                ]
+                    ArrayHelper::map(\app\models\Tags::find()->all(), 'tag', 'tag'),
+                    [
+                            'multiple' => true,
+                            'class' => 'form-control select2-tags',
+                            'id' => 'writings-tag_list'
+                    ]
             ) ?>
         </div>
+    </div>
+    <div class="row">
+
+
     </div>
 
     <?= $form->field($model, 'body')->hiddenInput(['id' => 'writings-body'])->label(false) ?>
