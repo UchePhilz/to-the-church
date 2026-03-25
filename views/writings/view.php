@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => $model->churchGroup->name ?? 'N/A',
                     ],
                     'title',
+                    'url_tag',
                     [
                         'attribute' => 'tag_list',
                         'value' => function($model) {

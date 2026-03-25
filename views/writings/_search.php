@@ -33,8 +33,11 @@ use yii\helpers\ArrayHelper;
                 $model::STATUS_PUBLISHED => 'Published',
             ], ['prompt' => 'Select Status']) ?>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <?= $form->field($model, 'title') ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'url_tag') ?>
         </div>
         <div class="col-md-3">
             <?= $form->field($model, 'body') ?>

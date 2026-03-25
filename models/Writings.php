@@ -13,6 +13,7 @@ use Yii;
  * @property string $body
  * @property string|null $created_at
  * @property string $status
+ * @property string|null $url_tag
  *
  * @property ChurchGroups $churchGroup
  */
@@ -40,9 +41,13 @@ class Writings extends \yii\db\ActiveRecord
         return [
             [['church_group_id', 'title', 'body'], 'required'],
             [['church_group_id'], 'integer'],
-            [['body', 'status'], 'string'],
+            [['body', 'status', 'url_tag'], 'string'],
             [['created_at', 'tag_list'], 'safe'],
-            [['title'], 'string', 'max' => 255],
+            ['url_tag', 'filter', 'filter' => function ($value) {
+                return $value === null ? null : strtolower(preg_replace('/[^a-z0-9\-]/i', '', str_replace(' ', '-', $value)));
+            }],
+            [['title', 'url_tag'], 'string', 'max' => 255],
+            ['url_tag', 'match', 'pattern' => '/^[a-z0-9\-]+$/', 'message' => 'URL Tag can only contain lowercase letters, numbers, and hyphens.'],
             ['status', 'default', 'value' => self::STATUS_DRAFT],
             ['status', 'in', 'range' => [self::STATUS_PUBLISHED, self::STATUS_DRAFT]],
             [['church_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => ChurchGroups::class, 'targetAttribute' => ['church_group_id' => 'id']],
@@ -61,6 +66,7 @@ class Writings extends \yii\db\ActiveRecord
             'body' => 'Body',
             'created_at' => 'Created At',
             'status' => 'Status',
+            'url_tag' => 'URL Tag',
             'tag_list' => 'Tags',
         ];
     }

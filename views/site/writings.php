@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="card-text">
                             <?= \yii\helpers\StringHelper::truncateWords(strip_tags($writing->body), 50) ?>
                         </div>
-                        <?= Html::a('Read More', ['site/view-writing?'. 'title='. urlencode($writing->title)], ['class' => 'btn btn-outline-secondary mt-2']) ?>
+                        <?php 
+                            $url = $writing->url_tag ? ['site/view-writing', 'url_tag' => $writing->url_tag] : ['site/view-writing', 'title' => $writing->title];
+                        ?>
+                        <?= Html::a('Read More', $url, ['class' => 'btn btn-outline-secondary mt-2']) ?>
                     </div>
                 </div>
             </div>

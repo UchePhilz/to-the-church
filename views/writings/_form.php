@@ -20,8 +20,15 @@ use yii\helpers\ArrayHelper;
     ) ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'url_tag')->textInput([
+                'maxlength' => true,
+                'placeholder' => 'lowercase-numbers-hyphen',
+                'onkeyup' => "this.value = this.value.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');"
+            ]) ?>
         </div>
         <div class="col-md-3">
             <?= $form->field($model, 'status')->dropDownList([

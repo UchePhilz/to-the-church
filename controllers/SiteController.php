@@ -167,14 +167,23 @@ class SiteController extends Controller
     /**
      * Displays a single Writing for public view.
      *
-     * @param string $title
+     * @param string|null $title
+     * @param string|null $url_tag
      * @return string
      * @throws \yii\web\NotFoundHttpException
      */
-    public function actionViewWriting($title)
+    public function actionViewWriting($title = null, $url_tag = null)
     {
         $this->layout = 'public_scroll';
-        $model = \app\models\Writings::find()->where(['title' => $title])->one();
+        
+        $query = \app\models\Writings::find();
+        if ($url_tag) {
+            $model = $query->where(['url_tag' => $url_tag])->one();
+        } elseif ($title) {
+            $model = $query->where(['title' => $title])->one();
+        } else {
+            throw new \yii\web\NotFoundHttpException('The requested writing does not exist.');
+        }
         
         if (!$model || ($model->status !== \app\models\Writings::STATUS_PUBLISHED && Yii::$app->user->isGuest)) {
             throw new \yii\web\NotFoundHttpException('The requested writing does not exist.');
