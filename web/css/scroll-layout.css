@@ -142,13 +142,27 @@ body.public-scroll-page {
     cursor: pointer;
     z-index: 1050;
     transition: transform 0.2s, background-color 0.2s;
-    font-size: 24px;
+}
+
+.floating-groups-btn svg {
+    display: block;
 }
 
 .floating-groups-btn:hover {
     transform: scale(1.1);
     background-color: #a0522d;
     color: #fff;
+}
+
+.floating-groups-btn.active {
+    background-color: #2c1e13;
+    border-color: #fdf5e6;
+    transform: rotate(90deg);
+}
+
+.floating-groups-btn.active:hover {
+    background-color: #3e2723;
+    transform: rotate(90deg) scale(1.1);
 }
 
 .offcanvas-scroll {
